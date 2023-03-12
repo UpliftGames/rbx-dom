@@ -1,9 +1,9 @@
 {
   "Version": [
     0,
-    565,
+    566,
     0,
-    5650363
+    5660545
   ],
   "Classes": {
     "Accessory": {
@@ -1483,6 +1483,23 @@
       "Tags": [],
       "Superclass": "Instance",
       "Properties": {
+        "EvaluationThrottled": {
+          "Name": "EvaluationThrottled",
+          "Scriptability": "Read",
+          "DataType": {
+            "Value": "Bool"
+          },
+          "Tags": [
+            "NotBrowsable",
+            "NotReplicated",
+            "ReadOnly"
+          ],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "DoesNotSerialize"
+            }
+          }
+        },
         "PreferLodEnabled": {
           "Name": "PreferLodEnabled",
           "Scriptability": "ReadWrite",
@@ -13476,6 +13493,16 @@
         }
       }
     },
+    "FacialAnimationStreamingServiceStats": {
+      "Name": "FacialAnimationStreamingServiceStats",
+      "Tags": [
+        "NotCreatable",
+        "NotReplicated"
+      ],
+      "Superclass": "Instance",
+      "Properties": {},
+      "DefaultProperties": {}
+    },
     "FacialAnimationStreamingServiceV2": {
       "Name": "FacialAnimationStreamingServiceV2",
       "Tags": [
@@ -13500,20 +13527,7 @@
           }
         }
       },
-      "DefaultProperties": {
-        "Attributes": {
-          "BinaryString": ""
-        },
-        "ServiceState": {
-          "Int32": 0
-        },
-        "SourceAssetId": {
-          "Int64": -1
-        },
-        "Tags": {
-          "BinaryString": ""
-        }
-      }
+      "DefaultProperties": {}
     },
     "Feature": {
       "Name": "Feature",
@@ -20161,6 +20175,19 @@
             }
           }
         },
+        "ExistingPackageId": {
+          "Name": "ExistingPackageId",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "String"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
         "FileDimensions": {
           "Name": "FileDimensions",
           "Scriptability": "Read",
@@ -20179,6 +20206,19 @@
         },
         "ImportAsModelAsset": {
           "Name": "ImportAsModelAsset",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Bool"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "ImportAsPackage": {
+          "Name": "ImportAsPackage",
           "Scriptability": "ReadWrite",
           "DataType": {
             "Value": "Bool"
@@ -22896,6 +22936,27 @@
       "Tags": [
         "NotCreatable",
         "Service"
+      ],
+      "Superclass": "Instance",
+      "Properties": {},
+      "DefaultProperties": {}
+    },
+    "MaterialGenerationService": {
+      "Name": "MaterialGenerationService",
+      "Tags": [
+        "NotCreatable",
+        "NotReplicated",
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Properties": {},
+      "DefaultProperties": {}
+    },
+    "MaterialGenerationSession": {
+      "Name": "MaterialGenerationSession",
+      "Tags": [
+        "NotCreatable",
+        "NotReplicated"
       ],
       "Superclass": "Instance",
       "Properties": {},
@@ -32772,7 +32833,12 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "DoesNotSerialize"
+              "Serialization": {
+                "Migrate": {
+                  "Property": "ScreenInsets",
+                  "Migration": "IgnoreGuiInsetToScreenInsets"
+                }
+              }
             }
           }
         },
@@ -34005,6 +34071,21 @@
           "Tags": [
             "NotReplicated",
             "ReadOnly"
+          ],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "DoesNotSerialize"
+            }
+          }
+        },
+        "ShowBoundingBox": {
+          "Name": "ShowBoundingBox",
+          "Scriptability": "None",
+          "DataType": {
+            "Value": "Bool"
+          },
+          "Tags": [
+            "Hidden"
           ],
           "Kind": {
             "Canonical": {
@@ -42927,7 +43008,12 @@
           ],
           "Kind": {
             "Canonical": {
-              "Serialization": "DoesNotSerialize"
+              "Serialization": {
+                "Migrate": {
+                  "Property": "FontFace",
+                  "Migration": "FontToFontFace"
+                }
+              }
             }
           }
         },
@@ -43589,7 +43675,12 @@
           ],
           "Kind": {
             "Canonical": {
-              "Serialization": "DoesNotSerialize"
+              "Serialization": {
+                "Migrate": {
+                  "Property": "FontFace",
+                  "Migration": "FontToFontFace"
+                }
+              }
             }
           }
         },
@@ -44423,7 +44514,12 @@
           ],
           "Kind": {
             "Canonical": {
-              "Serialization": "DoesNotSerialize"
+              "Serialization": {
+                "Migrate": {
+                  "Property": "FontFace",
+                  "Migration": "FontToFontFace"
+                }
+              }
             }
           }
         },
@@ -54291,6 +54387,13 @@
         "Stopping": 3
       }
     },
+    "MuteState": {
+      "name": "MuteState",
+      "items": {
+        "Muted": 1,
+        "Unmuted": 0
+      }
+    },
     "NameOcclusion": {
       "name": "NameOcclusion",
       "items": {
@@ -54901,6 +55004,7 @@
       "items": {
         "BackendError": 4,
         "ConsentAccepted": 0,
+        "ConsentDenied": 7,
         "InvalidArgument": 6,
         "InvalidScopes": 1,
         "NoUserInput": 3,
@@ -55606,6 +55710,12 @@
         "AudioVideo": 3,
         "None": 0,
         "Video": 2
+      }
+    },
+    "TrackerPromptEvent": {
+      "name": "TrackerPromptEvent",
+      "items": {
+        "LODCameraRecommendDisable": 0
       }
     },
     "TriStateBoolean": {
