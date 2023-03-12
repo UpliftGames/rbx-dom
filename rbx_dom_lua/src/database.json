@@ -43026,7 +43026,7 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "DoesNotSerialize"
+              "Serialization": "Serializes"
             }
           }
         },
@@ -43693,7 +43693,7 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "DoesNotSerialize"
+              "Serialization": "Serializes"
             }
           }
         },
@@ -44532,7 +44532,7 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "DoesNotSerialize"
+              "Serialization": "Serializes"
             }
           }
         },
