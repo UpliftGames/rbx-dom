@@ -5,7 +5,7 @@ use std::{
 
 use log::trace;
 use rbx_dom_weak::{
-    types::{Ref, SharedString, Variant, VariantType},
+    types::{Enum, Font, Ref, SharedString, Variant, VariantType},
     InstanceBuilder, WeakDom,
 };
 use rbx_reflection::DataType;
@@ -607,7 +607,31 @@ fn deserialize_properties<R: Read>(
                 }
             };
 
-            props.insert(descriptor.name.to_string(), value);
+            match descriptor.name.as_ref() {
+                "Font" => match value {
+                    Variant::Enum(value) => match Font::from_font_enum(value.to_u32()) {
+                        Some(value) => {
+                            props.insert(descriptor.name.to_string(), value.into());
+                        }
+                        None => {
+                            log::warn!("Invalid value for Font enum {}, ignoring", value.to_u32())
+                        }
+                    },
+                    _ => log::warn!("Invalid type for Font enum {:?}, ignoring", value),
+                },
+                "IgnoreGuiInset" => match value {
+                    Variant::Bool(value) => {
+                        props.insert(
+                            "ScreenInsets".to_string(),
+                            Enum::from_u32(if value { 1 } else { 2 }).into(),
+                        );
+                    }
+                    _ => log::warn!("Invalid type for IgnoreGuiInset bool {:?}, ignoring", value),
+                },
+                _ => {
+                    props.insert(descriptor.name.to_string(), value);
+                }
+            };
         } else {
             match state.options.property_behavior {
                 DecodePropertyBehavior::IgnoreUnknown => {

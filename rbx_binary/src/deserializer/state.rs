@@ -401,7 +401,14 @@ impl<'a, R: Read> DeserializerState<'a, R> {
                     for referent in &type_info.referents {
                         let instance = self.instances_by_ref.get_mut(referent).unwrap();
                         let value = chunk.read_bool()?;
-                        instance.builder.add_property(&canonical_name, value);
+                        if canonical_name == "IgnoreGuiInset" {
+                            instance.builder.add_property(
+                                "ScreenInsets",
+                                Enum::from_u32(if value { 1 } else { 2 }),
+                            )
+                        } else {
+                            instance.builder.add_property(&canonical_name, value);
+                        }
                     }
                 }
                 invalid_type => {
@@ -802,9 +809,18 @@ impl<'a, R: Read> DeserializerState<'a, R> {
 
                     for (value, referent) in values.into_iter().zip(&type_info.referents) {
                         let instance = self.instances_by_ref.get_mut(referent).unwrap();
-                        instance
-                            .builder
-                            .add_property(&canonical_name, Enum::from_u32(value));
+                        if canonical_name == "Font" {
+                            let font_value = Font::from_font_enum(value);
+                            if let Some(font_value) = font_value {
+                                instance.builder.add_property(&canonical_name, font_value);
+                            } else {
+                                log::warn!("Invalid value for Font enum {}, ignoring", value);
+                            }
+                        } else {
+                            instance
+                                .builder
+                                .add_property(&canonical_name, Enum::from_u32(value));
+                        }
                     }
                 }
                 invalid_type => {
