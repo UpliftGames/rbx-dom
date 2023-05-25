@@ -1,6 +1,10 @@
 # rbx_binary Changelog
 
 ## Unreleased
+* Added support for `UniqueId` values. ([#271])
+* [#256]: https://github.com/rojo-rbx/rbx-dom/pull/271
+
+## 0.7.0 (2023-04-22)
 * Added support for `Font` values. ([#248])
 * Fixed the nondeterministic output of SSTR chunk when multiple shared strings are present. ([#254])
 * Added support for `UniqueId` values. ([#256])

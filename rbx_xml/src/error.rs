@@ -93,6 +93,10 @@ pub(crate) enum DecodeErrorKind {
         actual_type: VariantType,
         message: String,
     },
+    InvalidPropertyData {
+        property_type: &'static str,
+        error: String,
+    },
 }
 
 impl fmt::Display for DecodeErrorKind {
@@ -140,6 +144,13 @@ impl fmt::Display for DecodeErrorKind {
                  When trying to convert, this error occured: {}",
                 class_name, property_name, expected_type, actual_type, message
             ),
+            InvalidPropertyData {
+                property_type,
+                error,
+            } => write!(
+                output,
+                "Could not decode property of type {property_type} because: {error}"
+            ),
         }
     }
 }
@@ -155,14 +166,7 @@ impl std::error::Error for DecodeErrorKind {
             DecodeBase64(err) => Some(err),
             MigrationError(err) => Some(err),
 
-            WrongDocVersion(_)
-            | UnexpectedEof
-            | UnexpectedXmlEvent(_)
-            | MissingAttribute(_)
-            | UnknownProperty { .. }
-            | InvalidContent(_)
-            | NameMustBeString(_)
-            | UnsupportedPropertyConversion { .. } => None,
+            _ => None,
         }
     }
 }

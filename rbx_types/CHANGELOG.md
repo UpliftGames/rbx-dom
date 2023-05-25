@@ -1,6 +1,10 @@
 # rbx_types Changelog
 
 ## Unreleased Changes
+* Added support for `UniqueId` values. ([#271])
+* [#256]: https://github.com/rojo-rbx/rbx-dom/pull/271
+
+## 1.5.0 (2023-04-22)
 * Implemented `Font`. ([#248])
 * Implemented `UniqueId` ([#256])
 

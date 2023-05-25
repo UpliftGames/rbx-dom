@@ -13,6 +13,8 @@ rbx-dom is a collection of cross-platform libraries that enables any software to
 
 Documentation about the project is hosted at [dom.rojo.space](https://dom.rojo.space).
 
+At this moment, we do not specify a MSRV for any project in rbx-dom. If you need to build one of these libraries with an outdated version of Rust, please open an issue explaining what blockers there are to you updating Cargo, what version you would need us to support, and why.
+
 ## [rbx_dom_weak](rbx_dom_weak)
 [![rbx_dom_weak on crates.io](https://img.shields.io/crates/v/rbx_dom_weak.svg)](https://crates.io/crates/rbx_dom_weak)
 [![rbx_dom_weak docs](https://img.shields.io/badge/docs-docs.rs-orange.svg)](https://docs.rs/rbx_dom_weak)
@@ -49,7 +51,12 @@ Roblox reflection types for working with Instances in external tooling.
 
 Bundled reflection database using types from rbx_reflection. Intended for users migrating from rbx_reflection 4.x and users who need reflection information statically.
 
+## [rbx_reflector](rbx_reflector)
+
+Command line utility to generate a reflection database for rbx_dom_lua and rbx_reflection_database.
+
 ## [rbx_util](rbx_util)
+
 Command line utility to convert and debug Roblox model files.
 
 ## [rbx_dom_lua](rbx_dom_lua)
@@ -74,6 +81,7 @@ Roblox Lua implementation of DOM APIs, allowing Instance reflection from inside 
 | Faces                   | `Handles.Faces`                 | ✔ | ✔ | ✔ | ✔ |
 | Float32                 | `Players.RespawnTime`           | ✔ | ✔ | ✔ | ✔ |
 | Float64                 | `Sound.PlaybackLoudness`        | ✔ | ✔ | ✔ | ✔ |
+| Font                    | `TextLabel.Font`                | ✔ | ✔ | ✔ | ✔ |
 | Int32                   | `Frame.ZIndex`                  | ✔ | ✔ | ✔ | ✔ |
 | Int64                   | `Player.UserId`                 | ✔ | ✔ | ✔ | ✔ |
 | NumberRange             | `ParticleEmitter.Lifetime`      | ✔ | ✔ | ✔ | ✔ |
@@ -90,6 +98,7 @@ Roblox Lua implementation of DOM APIs, allowing Instance reflection from inside 
 | String                  | `Instance.Name`                 | ✔ | ✔ | ✔ | ✔ |
 | UDim                    | `UIListLayout.Padding`          | ✔ | ✔ | ✔ | ✔ |
 | UDim2                   | `Frame.Size`                    | ✔ | ✔ | ✔ | ✔ |
+| UniqueId                | `Instance.UniqueId              | ✔ | ❌ | ✔ | ✔ |
 | Vector2                 | `ImageLabel.ImageRectSize`      | ✔ | ✔ | ✔ | ✔ |
 | Vector2int16            | N/A                             | ✔ | ✔ | ✔ | ❌ |
 | Vector3                 | `Part.Size`                     | ✔ | ✔ | ✔ | ✔ |
