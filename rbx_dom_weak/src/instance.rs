@@ -2,6 +2,8 @@ use std::collections::HashMap;
 
 use rbx_types::{Ref, Variant};
 
+use crate::WeakDom;
+
 /**
 Represents an instance that can be turned into a new
 [`WeakDom`][crate::WeakDom], or inserted into an existing one.
@@ -70,6 +72,25 @@ impl InstanceBuilder {
     /// Return the referent of the instance that the `InstanceBuilder` refers to.
     pub fn referent(&self) -> Ref {
         self.referent
+    }
+
+    /// Change the referent of the `InstanceBuilder`.
+    ///
+    /// This typically should not be used. Referent collisions can cause strange
+    /// bugs. This may be useful for e.g. minimizing diffs by keeping refs.
+    pub fn with_referent<S: Into<Ref>>(self, referent: S) -> Self {
+        Self {
+            referent: referent.into(),
+            ..self
+        }
+    }
+
+    /// Change the referent of the `InstanceBuilder`.
+    ///
+    /// This typically should not be used. Referent collisions can cause strange
+    /// bugs. This may be useful for e.g. minimizing diffs by keeping refs.
+    pub fn set_referent<S: Into<Ref>>(&mut self, referent: S) {
+        self.referent = referent.into();
     }
 
     /// Change the name of the `InstanceBuilder`.
@@ -168,6 +189,23 @@ impl InstanceBuilder {
         I: IntoIterator<Item = InstanceBuilder>,
     {
         self.children.extend(children.into_iter());
+    }
+
+    /// Create an InstanceBuilder from an existing instance on another dom.
+    /// Allows for copying instances between doms.
+    pub fn from_instance(dom: &WeakDom, id: Ref) -> Self {
+        let instance = dom.get_by_ref(id).unwrap();
+        Self {
+            referent: id,
+            name: instance.name.clone(),
+            class: instance.class.clone(),
+            properties: instance.properties.clone(),
+            children: instance
+                .children
+                .iter()
+                .map(|child_ref| Self::from_instance(dom, *child_ref))
+                .collect(),
+        }
     }
 }
 

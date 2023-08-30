@@ -320,6 +320,53 @@ impl WeakDom {
 
         instance
     }
+
+    /// Swaps the instances under two refs.
+    ///
+    /// It is allowed for either ref to map to nothing. This will move the
+    /// instance to a new ref instead of swapping it with an existing item. If
+    /// both refs map to nothing, this is a no-op.
+    ///
+    /// This swaps the refs and fixes all parent/child relations. It _does not_
+    /// fix any other properties in the dom that refer to these refs -- those
+    /// properties will still refer to the old ref for each instance.
+    pub fn swap_ref(&mut self, ref_1: Ref, ref_2: Ref) {
+        let instance_1 = self.instances.remove(&ref_1);
+        let instance_2 = self.instances.remove(&ref_2);
+
+        if let Some(instance) = instance_1 {
+            self.swap_ref_half(instance, ref_1, ref_2);
+        }
+        if let Some(instance) = instance_2 {
+            self.swap_ref_half(instance, ref_2, ref_1);
+        }
+    }
+
+    fn swap_ref_half(&mut self, mut instance: Instance, old_ref: Ref, new_ref: Ref) -> () {
+        // fix parent
+        if let Some(instance_parent) = self.instances.get_mut(&instance.parent) {
+            for child_ref in instance_parent.children.iter_mut() {
+                if *child_ref == old_ref {
+                    *child_ref = new_ref;
+                    break;
+                }
+            }
+        }
+        // fix children
+        for child_ref in instance.children.iter() {
+            if let Some(instance_child) = self.instances.get_mut(child_ref) {
+                instance_child.parent = new_ref;
+            }
+        }
+        // fix internal ref field
+        instance.referent = new_ref;
+        // fix root ref
+        if old_ref == self.root_ref {
+            self.root_ref = new_ref;
+        }
+        // re-insert instance
+        self.instances.insert(new_ref, instance);
+    }
 }
 
 #[derive(Debug, Default)]
