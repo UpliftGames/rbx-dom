@@ -4,6 +4,7 @@ use crate::{
     Ray, Rect, Ref, Region3, Region3int16, SharedString, Tags, UDim, UDim2, UniqueId, Vector2,
     Vector2int16, Vector3, Vector3int16,
 };
+use std::hash::{Hash, Hasher};
 
 /// Reduces boilerplate from listing different values of Variant by wrapping
 /// them into a macro.
@@ -137,6 +138,53 @@ make_variant! {
 impl From<&'_ str> for Variant {
     fn from(value: &str) -> Self {
         Self::String(value.to_owned())
+    }
+}
+
+impl Hash for Variant {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.ty().hash(state);
+
+        match self {
+            Variant::Float32(v) => v.to_bits().hash(state),
+            Variant::Float64(v) => v.to_bits().hash(state),
+
+            Variant::Axes(v) => Hash::hash(v, state),
+            Variant::BinaryString(v) => Hash::hash(v, state),
+            Variant::Bool(v) => Hash::hash(v, state),
+            Variant::BrickColor(v) => Hash::hash(v, state),
+            Variant::CFrame(v) => Hash::hash(v, state),
+            Variant::Color3(v) => Hash::hash(v, state),
+            Variant::Color3uint8(v) => Hash::hash(v, state),
+            Variant::ColorSequence(v) => Hash::hash(v, state),
+            Variant::Content(v) => Hash::hash(v, state),
+            Variant::Enum(v) => Hash::hash(v, state),
+            Variant::Faces(v) => Hash::hash(v, state),
+            Variant::Int32(v) => Hash::hash(v, state),
+            Variant::Int64(v) => Hash::hash(v, state),
+            Variant::NumberRange(v) => Hash::hash(v, state),
+            Variant::NumberSequence(v) => Hash::hash(v, state),
+            Variant::PhysicalProperties(v) => Hash::hash(v, state),
+            Variant::Ray(v) => Hash::hash(v, state),
+            Variant::Rect(v) => Hash::hash(v, state),
+            Variant::Ref(v) => Hash::hash(v, state),
+            Variant::Region3(v) => Hash::hash(v, state),
+            Variant::Region3int16(v) => Hash::hash(v, state),
+            Variant::SharedString(v) => Hash::hash(v, state),
+            Variant::String(v) => Hash::hash(v, state),
+            Variant::UDim(v) => Hash::hash(v, state),
+            Variant::UDim2(v) => Hash::hash(v, state),
+            Variant::Vector2(v) => Hash::hash(v, state),
+            Variant::Vector2int16(v) => Hash::hash(v, state),
+            Variant::Vector3(v) => Hash::hash(v, state),
+            Variant::Vector3int16(v) => Hash::hash(v, state),
+            Variant::OptionalCFrame(v) => Hash::hash(v, state),
+            Variant::Tags(v) => Hash::hash(v, state),
+            Variant::Attributes(v) => Hash::hash(v, state),
+            Variant::Font(v) => Hash::hash(v, state),
+            Variant::UniqueId(v) => Hash::hash(v, state),
+            Variant::MaterialColors(v) => Hash::hash(v, state),
+        }
     }
 }
 

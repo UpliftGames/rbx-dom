@@ -14,7 +14,7 @@ bitflags::bitflags! {
 ///
 /// ## See Also
 /// * [Axes on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/Axes)
-#[derive(Clone, Copy, PartialEq, Eq)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Axes {
     flags: AxisFlags,
 }

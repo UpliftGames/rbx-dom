@@ -1,6 +1,7 @@
 use thiserror::Error;
 
 use crate::Error;
+use std::hash::{Hash, Hasher};
 
 /// Represents any Roblox enum value.
 ///
@@ -9,7 +10,7 @@ use crate::Error;
 ///
 /// A list of all enums and their values are available [on the Roblox Developer
 /// Hub](https://developer.roblox.com/en-us/api-reference/enum).
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Serialize, serde::Deserialize),
@@ -46,6 +47,13 @@ impl Vector2 {
     }
 }
 
+impl Hash for Vector2 {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.x.to_bits().hash(state);
+        self.y.to_bits().hash(state);
+    }
+}
+
 /// A version of [`Vector2`][Vector2] whose coordinates are signed 16-bit
 /// integers.
 ///
@@ -54,7 +62,7 @@ impl Vector2 {
 /// * [Vector2int16 on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/Vector2int16)
 ///
 /// [Vector2]: struct.Vector2.html
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Vector2int16 {
     pub x: i16,
     pub y: i16,
@@ -63,6 +71,12 @@ pub struct Vector2int16 {
 impl Vector2int16 {
     pub fn new(x: i16, y: i16) -> Self {
         Self { x, y }
+    }
+}
+
+impl Into<Vector2> for Vector2int16 {
+    fn into(self) -> Vector2 {
+        Vector2::new(self.x as f32, self.y as f32)
     }
 }
 
@@ -127,6 +141,14 @@ impl Vector3 {
     }
 }
 
+impl Hash for Vector3 {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.x.to_bits().hash(state);
+        self.y.to_bits().hash(state);
+        self.z.to_bits().hash(state);
+    }
+}
+
 /// A version of [`Vector3`][Vector3] whose coordinates are signed 16-bit
 /// integers. `Vector3int16` is often used when working with Terrain.
 ///
@@ -135,7 +157,7 @@ impl Vector3 {
 /// * [Vector3int16 on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/Vector3int16)
 ///
 /// [Vector3]: struct.Vector3.html
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Vector3int16 {
     pub x: i16,
     pub y: i16,
@@ -148,11 +170,17 @@ impl Vector3int16 {
     }
 }
 
+impl Into<Vector3> for Vector3int16 {
+    fn into(self) -> Vector3 {
+        Vector3::new(self.x as f32, self.y as f32, self.z as f32)
+    }
+}
+
 /// Represents a position and orientation in 3D space.
 ///
 /// ## See Also
 /// * [CFrame on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/CFrame)
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Serialize, serde::Deserialize),
@@ -174,7 +202,7 @@ impl CFrame {
 
 /// Used to represent the `orientation` field of `CFrame` and not a standalone
 /// type in Roblox.
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Hash)]
 pub struct Matrix3 {
     pub x: Vector3,
     pub y: Vector3,
@@ -383,6 +411,14 @@ impl From<Color3uint8> for Color3 {
     }
 }
 
+impl Hash for Color3 {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.r.to_bits().hash(state);
+        self.g.to_bits().hash(state);
+        self.b.to_bits().hash(state);
+    }
+}
+
 /// Represents non-HDR colors, i.e. those whose individual color channels do not
 /// exceed 1. This type is used for serializing properties like
 /// [`BasePart.Color`][BasePart.Color], but is not exposed as a distinct type to
@@ -393,7 +429,7 @@ impl From<Color3uint8> for Color3 {
 ///   colors.
 ///
 /// [BasePart.Color]: https://developer.roblox.com/en-us/api-reference/property/BasePart/Color
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Color3uint8 {
     pub r: u8,
     pub g: u8,
@@ -424,7 +460,7 @@ impl From<Color3> for Color3uint8 {
 /// * [Ray on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/Ray)
 ///
 /// [FindPartOnRay]: https://developer.roblox.com/en-us/api-reference/function/WorldRoot/FindPartOnRay
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Serialize, serde::Deserialize),
@@ -446,7 +482,7 @@ impl Ray {
 /// ## See Also
 /// * [`Region3int16`](struct.Region3int16.html)
 /// * [Region3 on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/Region3)
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Hash)]
 pub struct Region3 {
     pub min: Vector3,
     pub max: Vector3,
@@ -466,7 +502,7 @@ impl Region3 {
 /// * [Region3int16 on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/Region3int16)
 ///
 /// [Region3]: struct.Region3.html
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Region3int16 {
     pub min: Vector3int16,
     pub max: Vector3int16,
@@ -478,11 +514,17 @@ impl Region3int16 {
     }
 }
 
+impl Into<Region3> for Region3int16 {
+    fn into(self) -> Region3 {
+        Region3::new(self.min.into(), self.max.into())
+    }
+}
+
 /// Represents a bounding rectangle in 2D space.
 ///
 /// ## See Also
 /// * [Rect on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/Rect)
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Hash)]
 pub struct Rect {
     pub min: Vector2,
     pub max: Vector2,
@@ -511,12 +553,19 @@ impl UDim {
     }
 }
 
+impl Hash for UDim {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.scale.to_bits().hash(state);
+        self.offset.hash(state);
+    }
+}
+
 /// Standard 2D unit for measuring UI given as `scale`, a fraction of the
 /// container's size and `offset`, display-indepdendent pixels.
 ///
 /// ## See Also
 /// * [UDim2 on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/UDim2)
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Hash)]
 pub struct UDim2 {
     pub x: UDim,
     pub y: UDim,
@@ -544,11 +593,18 @@ impl NumberRange {
     }
 }
 
+impl Hash for NumberRange {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.min.to_bits().hash(state);
+        self.max.to_bits().hash(state);
+    }
+}
+
 /// A series of colors that can be tweened through.
 ///
 /// ## See Also
 /// * [ColorSequence on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence)
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Serialize, serde::Deserialize),
@@ -581,12 +637,19 @@ impl ColorSequenceKeypoint {
     }
 }
 
+impl Hash for ColorSequenceKeypoint {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.time.to_bits().hash(state);
+        self.color.hash(state);
+    }
+}
+
 /// A sequence of numbers on a timeline. Each point contains a timestamp, a
 /// value, and a range that allows for randomized values.
 ///
 /// ## See Also
 /// * [NumberSequence on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/NumberSequence)
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Serialize, serde::Deserialize),
@@ -622,6 +685,14 @@ impl NumberSequenceKeypoint {
             value,
             envelope,
         }
+    }
+}
+
+impl Hash for NumberSequenceKeypoint {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.time.to_bits().hash(state);
+        self.value.to_bits().hash(state);
+        self.envelope.to_bits().hash(state);
     }
 }
 

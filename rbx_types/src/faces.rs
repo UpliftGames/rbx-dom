@@ -17,7 +17,7 @@ bitflags::bitflags! {
 ///
 /// ## See Also
 /// * [Faces on Roblox Developer Hub](https://developer.roblox.com/en-us/api-reference/datatype/Faces)
-#[derive(Clone, Copy, PartialEq, Eq)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Faces {
     flags: FaceFlags,
 }

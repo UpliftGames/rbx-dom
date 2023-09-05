@@ -1,5 +1,6 @@
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
+use std::hash::{Hash, Hasher};
 
 /// Represents the physical properties that parts can have.
 ///
@@ -8,7 +9,7 @@ use serde::{Deserialize, Deserializer, Serialize, Serializer};
 /// that `PhysicalProperties` can have.
 ///
 /// [PhysicalProperties]: https://developer.roblox.com/en-us/api-reference/datatype/PhysicalProperties
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Hash)]
 pub enum PhysicalProperties {
     Default,
     Custom(CustomPhysicalProperties),
@@ -35,6 +36,16 @@ pub struct CustomPhysicalProperties {
     pub elasticity: f32,
     pub friction_weight: f32,
     pub elasticity_weight: f32,
+}
+
+impl Hash for CustomPhysicalProperties {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.density.to_bits().hash(state);
+        self.friction.to_bits().hash(state);
+        self.elasticity.to_bits().hash(state);
+        self.friction_weight.to_bits().hash(state);
+        self.elasticity_weight.to_bits().hash(state);
+    }
 }
 
 #[cfg(feature = "serde")]

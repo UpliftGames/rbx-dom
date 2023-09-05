@@ -22,7 +22,7 @@ use self::writer::write_attributes;
 
 pub(crate) use self::error::AttributeError;
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Serialize, serde::Deserialize),

@@ -4,7 +4,7 @@ use std::string::FromUtf8Error;
 ///
 /// This object does not ensure that tags are unique; there may be duplicate
 /// values in the list of tags.
-#[derive(Default, Clone, Debug, Eq, PartialEq)]
+#[derive(Default, Clone, Debug, Eq, PartialEq, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Serialize, serde::Deserialize),

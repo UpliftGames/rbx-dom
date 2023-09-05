@@ -17,7 +17,7 @@ macro_rules! make_brick_color {
         ///
         /// Parts no longer use BrickColor, but we have conversions here to
         /// support older models.
-        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
         #[repr(u16)]
         #[non_exhaustive]
         pub enum BrickColor {
