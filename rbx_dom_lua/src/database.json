@@ -1,9 +1,9 @@
 {
   "Version": [
     0,
-    628,
+    629,
     0,
-    6280391
+    6290609
   ],
   "Classes": {
     "Accessory": {
@@ -1749,70 +1749,6 @@
             }
           }
         },
-        "endEffectorRotationConstraint": {
-          "Name": "endEffectorRotationConstraint",
-          "Scriptability": "None",
-          "DataType": {
-            "Value": "BinaryString"
-          },
-          "Tags": [
-            "Hidden",
-            "NotScriptable"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
-            }
-          }
-        },
-        "endEffectorTranslationConstraint": {
-          "Name": "endEffectorTranslationConstraint",
-          "Scriptability": "None",
-          "DataType": {
-            "Value": "BinaryString"
-          },
-          "Tags": [
-            "Hidden",
-            "NotScriptable"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
-            }
-          }
-        },
-        "endEffectorWeight": {
-          "Name": "endEffectorWeight",
-          "Scriptability": "None",
-          "DataType": {
-            "Value": "BinaryString"
-          },
-          "Tags": [
-            "Hidden",
-            "NotScriptable"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
-            }
-          }
-        },
-        "facsControl": {
-          "Name": "facsControl",
-          "Scriptability": "None",
-          "DataType": {
-            "Value": "BinaryString"
-          },
-          "Tags": [
-            "Hidden",
-            "NotScriptable"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
-            }
-          }
-        },
         "label": {
           "Name": "label",
           "Scriptability": "None",
@@ -1893,40 +1829,8 @@
             }
           }
         },
-        "rootMotion": {
-          "Name": "rootMotion",
-          "Scriptability": "None",
-          "DataType": {
-            "Value": "BinaryString"
-          },
-          "Tags": [
-            "Hidden",
-            "NotScriptable"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
-            }
-          }
-        },
         "transform": {
           "Name": "transform",
-          "Scriptability": "None",
-          "DataType": {
-            "Value": "BinaryString"
-          },
-          "Tags": [
-            "Hidden",
-            "NotScriptable"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
-            }
-          }
-        },
-        "weight": {
-          "Name": "weight",
           "Scriptability": "None",
           "DataType": {
             "Value": "BinaryString"
@@ -1961,18 +1865,6 @@
         "articulatedJoint": {
           "BinaryString": ""
         },
-        "endEffectorRotationConstraint": {
-          "BinaryString": ""
-        },
-        "endEffectorTranslationConstraint": {
-          "BinaryString": ""
-        },
-        "endEffectorWeight": {
-          "BinaryString": ""
-        },
-        "facsControl": {
-          "BinaryString": ""
-        },
         "label": {
           "BinaryString": "AQAAAAEAAAAAAAAA"
         },
@@ -1988,14 +1880,8 @@
         "preTransform": {
           "BinaryString": "AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA="
         },
-        "rootMotion": {
-          "BinaryString": ""
-        },
         "transform": {
           "BinaryString": "AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA="
-        },
-        "weight": {
-          "BinaryString": "AQAAAAAAAAA="
         }
       }
     },
@@ -3438,6 +3324,19 @@
               "Serialization": "Serializes"
             }
           }
+        },
+        "Volume": {
+          "Name": "Volume",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Float32"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
         }
       },
       "DefaultProperties": {
@@ -3464,6 +3363,9 @@
         },
         "Tags": {
           "Tags": []
+        },
+        "Volume": {
+          "Float32": 1.0
         }
       }
     },
@@ -4253,6 +4155,19 @@
               "Serialization": "Serializes"
             }
           }
+        },
+        "Volume": {
+          "Name": "Volume",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Float32"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
         }
       },
       "DefaultProperties": {
@@ -4297,6 +4212,9 @@
         },
         "TimePosition": {
           "Float64": 0.0
+        },
+        "Volume": {
+          "Float32": 1.0
         }
       }
     },
@@ -11764,6 +11682,21 @@
               "Serialization": "Serializes"
             }
           }
+        },
+        "TonemapperPreset": {
+          "Name": "TonemapperPreset",
+          "Scriptability": "None",
+          "DataType": {
+            "Enum": "TonemapperPreset"
+          },
+          "Tags": [
+            "NotScriptable"
+          ],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
         }
       },
       "DefaultProperties": {
@@ -11800,6 +11733,9 @@
             1.0,
             1.0
           ]
+        },
+        "TonemapperPreset": {
+          "Enum": 0
         }
       }
     },
@@ -17391,6 +17327,22 @@
       ],
       "Superclass": "Instance",
       "Properties": {
+        "HiddenSelectionEnabled": {
+          "Name": "HiddenSelectionEnabled",
+          "Scriptability": "None",
+          "DataType": {
+            "Value": "Bool"
+          },
+          "Tags": [
+            "Hidden",
+            "NotReplicated"
+          ],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "DoesNotSerialize"
+            }
+          }
+        },
         "IsInCaptureMode": {
           "Name": "IsInCaptureMode",
           "Scriptability": "None",
@@ -35593,9 +35545,7 @@
     },
     "Path2D": {
       "Name": "Path2D",
-      "Tags": [
-        "NotBrowsable"
-      ],
+      "Tags": [],
       "Superclass": "GuiBase",
       "Properties": {
         "Color3": {
@@ -35713,7 +35663,7 @@
           "Bool": false
         },
         "PropertiesSerialize": {
-          "BinaryString": ""
+          "BinaryString": "AAAAAA=="
         },
         "SourceAssetId": {
           "Int64": -1
@@ -41150,7 +41100,7 @@
           "Bool": false
         },
         "ImageDataSerialize": {
-          "BinaryString": ""
+          "BinaryString": "ZmlvcQACAAAAAgAABAAA/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/cYAAAAAAAAAAQ=="
         },
         "Size": {
           "Vector2": [
@@ -54627,6 +54577,35 @@
             }
           }
         },
+        "OpenTypeFeatures": {
+          "Name": "OpenTypeFeatures",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "String"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "OpenTypeFeaturesError": {
+          "Name": "OpenTypeFeaturesError",
+          "Scriptability": "Read",
+          "DataType": {
+            "Value": "String"
+          },
+          "Tags": [
+            "NotReplicated",
+            "ReadOnly"
+          ],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "DoesNotSerialize"
+            }
+          }
+        },
         "OverlayNativeInput": {
           "Name": "OverlayNativeInput",
           "Scriptability": "None",
@@ -55061,6 +55040,9 @@
         "MultiLine": {
           "Bool": false
         },
+        "OpenTypeFeatures": {
+          "String": ""
+        },
         "PlaceholderColor3": {
           "Color3": [
             0.7,
@@ -55359,6 +55341,35 @@
           "Kind": {
             "Canonical": {
               "Serialization": "Serializes"
+            }
+          }
+        },
+        "OpenTypeFeatures": {
+          "Name": "OpenTypeFeatures",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "String"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "OpenTypeFeaturesError": {
+          "Name": "OpenTypeFeaturesError",
+          "Scriptability": "Read",
+          "DataType": {
+            "Value": "String"
+          },
+          "Tags": [
+            "NotReplicated",
+            "ReadOnly"
+          ],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "DoesNotSerialize"
             }
           }
         },
@@ -55682,6 +55693,9 @@
         },
         "Modal": {
           "Bool": false
+        },
+        "OpenTypeFeatures": {
+          "String": ""
         },
         "Position": {
           "UDim2": [
@@ -56456,6 +56470,35 @@
             }
           }
         },
+        "OpenTypeFeatures": {
+          "Name": "OpenTypeFeatures",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "String"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "OpenTypeFeaturesError": {
+          "Name": "OpenTypeFeaturesError",
+          "Scriptability": "Read",
+          "DataType": {
+            "Value": "String"
+          },
+          "Tags": [
+            "NotReplicated",
+            "ReadOnly"
+          ],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "DoesNotSerialize"
+            }
+          }
+        },
         "RichText": {
           "Name": "RichText",
           "Scriptability": "ReadWrite",
@@ -56770,6 +56813,9 @@
         },
         "MaxVisibleGraphemes": {
           "Int32": -1
+        },
+        "OpenTypeFeatures": {
+          "String": ""
         },
         "Position": {
           "UDim2": [
@@ -59024,6 +59070,278 @@
         },
         "DefinesCapabilities": {
           "Bool": false
+        },
+        "SourceAssetId": {
+          "Int64": -1
+        },
+        "Tags": {
+          "Tags": []
+        }
+      }
+    },
+    "UIDragDetector": {
+      "Name": "UIDragDetector",
+      "Tags": [],
+      "Superclass": "UIComponent",
+      "Properties": {
+        "BoundingUI": {
+          "Name": "BoundingUI",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Ref"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "DragAxis": {
+          "Name": "DragAxis",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Vector2"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "DragRelativity": {
+          "Name": "DragRelativity",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Enum": "UIDragDetectorDragRelativity"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "DragRotation": {
+          "Name": "DragRotation",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Float32"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "DragSpace": {
+          "Name": "DragSpace",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Enum": "UIDragDetectorDragSpace"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "DragStyle": {
+          "Name": "DragStyle",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Enum": "UIDragDetectorDragStyle"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "DragUDim2": {
+          "Name": "DragUDim2",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "UDim2"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "Enabled": {
+          "Name": "Enabled",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Bool"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "MaxDragAngle": {
+          "Name": "MaxDragAngle",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Float32"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "MaxDragTranslation": {
+          "Name": "MaxDragTranslation",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "UDim2"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "MinDragAngle": {
+          "Name": "MinDragAngle",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Float32"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "MinDragTranslation": {
+          "Name": "MinDragTranslation",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "UDim2"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "ReferenceUIInstance": {
+          "Name": "ReferenceUIInstance",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Ref"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "ResponseStyle": {
+          "Name": "ResponseStyle",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Enum": "UIDragDetectorResponseStyle"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        }
+      },
+      "DefaultProperties": {
+        "Attributes": {
+          "Attributes": {}
+        },
+        "Capabilities": {
+          "SecurityCapabilities": 0
+        },
+        "DefinesCapabilities": {
+          "Bool": false
+        },
+        "DragAxis": {
+          "Vector2": [
+            1.0,
+            0.0
+          ]
+        },
+        "DragRelativity": {
+          "Enum": 0
+        },
+        "DragRotation": {
+          "Float32": 0.0
+        },
+        "DragSpace": {
+          "Enum": 0
+        },
+        "DragStyle": {
+          "Enum": 0
+        },
+        "DragUDim2": {
+          "UDim2": [
+            [
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0
+            ]
+          ]
+        },
+        "Enabled": {
+          "Bool": true
+        },
+        "MaxDragAngle": {
+          "Float32": 0.0
+        },
+        "MaxDragTranslation": {
+          "UDim2": [
+            [
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0
+            ]
+          ]
+        },
+        "MinDragAngle": {
+          "Float32": 0.0
+        },
+        "MinDragTranslation": {
+          "UDim2": [
+            [
+              0.0,
+              0
+            ],
+            [
+              0.0,
+              0
+            ]
+          ]
+        },
+        "ResponseStyle": {
+          "Enum": 0
         },
         "SourceAssetId": {
           "Int64": -1
@@ -65217,21 +65535,6 @@
             }
           }
         },
-        "EditorLiveScripting": {
-          "Name": "EditorLiveScripting",
-          "Scriptability": "None",
-          "DataType": {
-            "Enum": "EditorLiveScripting"
-          },
-          "Tags": [
-            "NotScriptable"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
-            }
-          }
-        },
         "ExplicitAutoJoints": {
           "Name": "ExplicitAutoJoints",
           "Scriptability": "None",
@@ -65719,9 +66022,6 @@
         },
         "DistributedGameTime": {
           "Float64": 0.0
-        },
-        "EditorLiveScripting": {
-          "Enum": 0
         },
         "ExplicitAutoJoints": {
           "Bool": true
@@ -67830,14 +68130,6 @@
         "Quart": 4,
         "Quint": 5,
         "Sine": 1
-      }
-    },
-    "EditorLiveScripting": {
-      "name": "EditorLiveScripting",
-      "items": {
-        "Default": 0,
-        "Disabled": 1,
-        "Enabled": 2
       }
     },
     "ElasticBehavior": {
@@ -70528,6 +70820,13 @@
         "Precise": 2
       }
     },
+    "TonemapperPreset": {
+      "name": "TonemapperPreset",
+      "items": {
+        "Default": 0,
+        "Retro": 1
+      }
+    },
     "TopBottom": {
       "name": "TopBottom",
       "items": {
@@ -70637,6 +70936,21 @@
       "items": {
         "Canceled": 0,
         "Completed": 1
+      }
+    },
+    "UIDragDetectorDragRelativity": {
+      "name": "UIDragDetectorDragRelativity",
+      "items": {
+        "Absolute": 0,
+        "Relative": 1
+      }
+    },
+    "UIDragDetectorDragSpace": {
+      "name": "UIDragDetectorDragSpace",
+      "items": {
+        "LayerCollector": 1,
+        "Parent": 0,
+        "Reference": 2
       }
     },
     "UIDragDetectorDragStyle": {
