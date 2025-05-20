@@ -19071,7 +19071,12 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "Serializes"
+              "Serialization": {
+                "Migrate": {
+                  "To": "TextureContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
             }
           }
         },
@@ -19147,8 +19152,8 @@
         "Tags": {
           "Tags": []
         },
-        "Texture": {
-          "ContentId": ""
+        "TextureContent": {
+          "Content": "None"
         },
         "Transparency": {
           "Float32": 0.0
@@ -32610,6 +32615,24 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "HoverImageContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "HoverImageContent": {
+          "Name": "HoverImageContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
               "Serialization": "Serializes"
             }
           }
@@ -32731,6 +32754,24 @@
           "Scriptability": "ReadWrite",
           "DataType": {
             "Value": "ContentId"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "PressedImageContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "PressedImageContent": {
+          "Name": "PressedImageContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
           },
           "Tags": [],
           "Kind": {
@@ -32878,8 +32919,8 @@
         "HistoryId": {
           "UniqueId": "00000000000000000000000000000000"
         },
-        "HoverImage": {
-          "ContentId": ""
+        "HoverImageContent": {
+          "Content": "None"
         },
         "ImageColor3": {
           "Color3": [
@@ -32927,8 +32968,8 @@
             ]
           ]
         },
-        "PressedImage": {
-          "ContentId": ""
+        "PressedImageContent": {
+          "Content": "None"
         },
         "ResampleMode": {
           "Enum": 0
@@ -64490,6 +64531,26 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "ColorMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "ColorMapContent": {
+          "Name": "ColorMapContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
+          },
+          "Tags": [
+            "Hidden"
+          ],
+          "Kind": {
+            "Canonical": {
               "Serialization": "Serializes"
             }
           }
@@ -64516,6 +64577,26 @@
             "Value": "ContentId"
           },
           "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "MetalnessMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "MetalnessMapContent": {
+          "Name": "MetalnessMapContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
+          },
+          "Tags": [
+            "Hidden"
+          ],
           "Kind": {
             "Canonical": {
               "Serialization": "Serializes"
@@ -64546,6 +64627,26 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "NormalMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "NormalMapContent": {
+          "Name": "NormalMapContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
+          },
+          "Tags": [
+            "Hidden"
+          ],
+          "Kind": {
+            "Canonical": {
               "Serialization": "Serializes"
             }
           }
@@ -64572,6 +64673,26 @@
             "Value": "ContentId"
           },
           "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "RoughnessMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "RoughnessMapContent": {
+          "Name": "RoughnessMapContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
+          },
+          "Tags": [
+            "Hidden"
+          ],
           "Kind": {
             "Canonical": {
               "Serialization": "Serializes"
@@ -64627,20 +64748,20 @@
             1.0
           ]
         },
-        "ColorMap": {
-          "ContentId": ""
+        "ColorMapContent": {
+          "Content": "None"
         },
         "HistoryId": {
           "UniqueId": "00000000000000000000000000000000"
         },
-        "MetalnessMap": {
-          "ContentId": ""
+        "MetalnessMapContent": {
+          "Content": "None"
         },
-        "NormalMap": {
-          "ContentId": ""
+        "NormalMapContent": {
+          "Content": "None"
         },
-        "RoughnessMap": {
-          "ContentId": ""
+        "RoughnessMapContent": {
+          "Content": "None"
         },
         "Sandboxed": {
           "Bool": false
@@ -70108,8 +70229,8 @@
         "Tags": {
           "Tags": []
         },
-        "Texture": {
-          "ContentId": ""
+        "TextureContent": {
+          "Content": "None"
         },
         "Transparency": {
           "Float32": 0.0
