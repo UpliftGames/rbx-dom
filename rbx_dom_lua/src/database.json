@@ -1,9 +1,9 @@
 {
   "Version": [
     0,
-    673,
+    674,
     0,
-    6730711
+    6740785
   ],
   "Classes": {
     "Accessory": {
@@ -1386,25 +1386,6 @@
         },
         "Visible": {
           "Bool": false
-        }
-      }
-    },
-    "AnalysticsSettings": {
-      "Name": "AnalysticsSettings",
-      "Tags": [
-        "NotCreatable"
-      ],
-      "Superclass": "GenericSettings",
-      "Properties": {},
-      "DefaultProperties": {
-        "Archivable": {
-          "Bool": true
-        },
-        "HistoryId": {
-          "UniqueId": "00000000000000000000000000000000"
-        },
-        "UniqueId": {
-          "UniqueId": "00000000000000000000000000000000"
         }
       }
     },
@@ -10452,36 +10433,6 @@
           "Kind": {
             "Canonical": {
               "Serialization": "DoesNotSerialize"
-            }
-          }
-        },
-        "MaxSize": {
-          "Name": "MaxSize",
-          "Scriptability": "None",
-          "DataType": {
-            "Value": "Vector3"
-          },
-          "Tags": [
-            "Hidden"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
-            }
-          }
-        },
-        "Offset": {
-          "Name": "Offset",
-          "Scriptability": "None",
-          "DataType": {
-            "Value": "Vector3"
-          },
-          "Tags": [
-            "Hidden"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
             }
           }
         },
@@ -27125,44 +27076,6 @@
         }
       }
     },
-    "GoogleAnalyticsConfiguration": {
-      "Name": "GoogleAnalyticsConfiguration",
-      "Tags": [
-        "NotCreatable",
-        "Service"
-      ],
-      "Superclass": "Instance",
-      "Properties": {
-        "gaID": {
-          "Name": "gaID",
-          "Scriptability": "None",
-          "DataType": {
-            "Value": "String"
-          },
-          "Tags": [
-            "Hidden",
-            "NotReplicated",
-            "NotScriptable"
-          ],
-          "Kind": {
-            "Canonical": {
-              "Serialization": "Serializes"
-            }
-          }
-        }
-      },
-      "DefaultProperties": {
-        "Archivable": {
-          "Bool": true
-        },
-        "HistoryId": {
-          "UniqueId": "00000000000000000000000000000000"
-        },
-        "UniqueId": {
-          "UniqueId": "00000000000000000000000000000000"
-        }
-      }
-    },
     "GroundController": {
       "Name": "GroundController",
       "Tags": [],
@@ -28942,7 +28855,9 @@
     },
     "HandRigDescription": {
       "Name": "HandRigDescription",
-      "Tags": [],
+      "Tags": [
+        "NotBrowsable"
+      ],
       "Superclass": "Instance",
       "Properties": {
         "Index1": {
@@ -30220,9 +30135,7 @@
     },
     "HapticEffect": {
       "Name": "HapticEffect",
-      "Tags": [
-        "NotBrowsable"
-      ],
+      "Tags": [],
       "Superclass": "Instance",
       "Properties": {
         "Looped": {
@@ -33038,8 +32951,8 @@
             }
           }
         },
-        "Head": {
-          "Name": "Head",
+        "HeadBase": {
+          "Name": "HeadBase",
           "Scriptability": "ReadWrite",
           "DataType": {
             "Value": "Ref"
@@ -33051,8 +32964,8 @@
             }
           }
         },
-        "HeadRangeMax": {
-          "Name": "HeadRangeMax",
+        "HeadBaseRangeMax": {
+          "Name": "HeadBaseRangeMax",
           "Scriptability": "ReadWrite",
           "DataType": {
             "Value": "Vector3"
@@ -33064,8 +32977,8 @@
             }
           }
         },
-        "HeadRangeMin": {
-          "Name": "HeadRangeMin",
+        "HeadBaseRangeMin": {
+          "Name": "HeadBaseRangeMin",
           "Scriptability": "ReadWrite",
           "DataType": {
             "Value": "Vector3"
@@ -33077,8 +32990,8 @@
             }
           }
         },
-        "HeadSize": {
-          "Name": "HeadSize",
+        "HeadBaseSize": {
+          "Name": "HeadBaseSize",
           "Scriptability": "ReadWrite",
           "DataType": {
             "Value": "Float32"
@@ -33090,8 +33003,8 @@
             }
           }
         },
-        "HeadTposeAdjustment": {
-          "Name": "HeadTposeAdjustment",
+        "HeadBaseTposeAdjustment": {
+          "Name": "HeadBaseTposeAdjustment",
           "Scriptability": "ReadWrite",
           "DataType": {
             "Value": "CFrame"
@@ -34457,24 +34370,24 @@
             ]
           }
         },
-        "HeadRangeMax": {
+        "HeadBaseRangeMax": {
           "Vector3": [
             0.0,
             0.0,
             0.0
           ]
         },
-        "HeadRangeMin": {
+        "HeadBaseRangeMin": {
           "Vector3": [
             0.0,
             0.0,
             0.0
           ]
         },
-        "HeadSize": {
+        "HeadBaseSize": {
           "Float32": 0.0
         },
-        "HeadTposeAdjustment": {
+        "HeadBaseTposeAdjustment": {
           "CFrame": {
             "position": [
               0.0,
@@ -41892,7 +41805,12 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "Serializes"
+              "Serialization": {
+                "Migrate": {
+                  "To": "ColorMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
             }
           }
         },
@@ -41944,7 +41862,12 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "Serializes"
+              "Serialization": {
+                "Migrate": {
+                  "To": "MetalnessMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
             }
           }
         },
@@ -41970,7 +41893,12 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "Serializes"
+              "Serialization": {
+                "Migrate": {
+                  "To": "NormalMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
             }
           }
         },
@@ -41996,7 +41924,12 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "Serializes"
+              "Serialization": {
+                "Migrate": {
+                  "To": "RoughnessMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
             }
           }
         },
@@ -42056,8 +41989,8 @@
         "Capabilities": {
           "SecurityCapabilities": 0
         },
-        "ColorMap": {
-          "ContentId": ""
+        "ColorMapContent": {
+          "Content": "None"
         },
         "CustomPhysicalProperties": {
           "PhysicalProperties": "Default"
@@ -42068,14 +42001,14 @@
         "MaterialPattern": {
           "Enum": 0
         },
-        "MetalnessMap": {
-          "ContentId": ""
+        "MetalnessMapContent": {
+          "Content": "None"
         },
-        "NormalMap": {
-          "ContentId": ""
+        "NormalMapContent": {
+          "Content": "None"
         },
-        "RoughnessMap": {
-          "ContentId": ""
+        "RoughnessMapContent": {
+          "Content": "None"
         },
         "Sandboxed": {
           "Bool": false
@@ -69884,6 +69817,24 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "ColorMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "ColorMapContent": {
+          "Name": "ColorMapContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
               "Serialization": "Serializes"
             }
           }
@@ -69923,6 +69874,24 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "MetalnessMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "MetalnessMapContent": {
+          "Name": "MetalnessMapContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
               "Serialization": "Serializes"
             }
           }
@@ -69936,6 +69905,24 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "NormalMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "NormalMapContent": {
+          "Name": "NormalMapContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
               "Serialization": "Serializes"
             }
           }
@@ -69945,6 +69932,24 @@
           "Scriptability": "ReadWrite",
           "DataType": {
             "Value": "ContentId"
+          },
+          "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": {
+                "Migrate": {
+                  "To": "RoughnessMapContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
+            }
+          }
+        },
+        "RoughnessMapContent": {
+          "Name": "RoughnessMapContent",
+          "Scriptability": "ReadWrite",
+          "DataType": {
+            "Value": "Content"
           },
           "Tags": [],
           "Kind": {
@@ -69993,8 +69998,8 @@
         "Capabilities": {
           "SecurityCapabilities": 0
         },
-        "ColorMap": {
-          "ContentId": ""
+        "ColorMapContent": {
+          "Content": "None"
         },
         "Face": {
           "Enum": 1
@@ -70005,14 +70010,14 @@
         "MaterialPattern": {
           "Enum": 0
         },
-        "MetalnessMap": {
-          "ContentId": ""
+        "MetalnessMapContent": {
+          "Content": "None"
         },
-        "NormalMap": {
-          "ContentId": ""
+        "NormalMapContent": {
+          "Content": "None"
         },
-        "RoughnessMap": {
-          "ContentId": ""
+        "RoughnessMapContent": {
+          "Content": "None"
         },
         "Sandboxed": {
           "Bool": false
@@ -81228,7 +81233,12 @@
           "Tags": [],
           "Kind": {
             "Canonical": {
-              "Serialization": "Serializes"
+              "Serialization": {
+                "Migrate": {
+                  "To": "VideoContent",
+                  "Migration": "ContentIdToContent"
+                }
+              }
             }
           }
         },
@@ -81396,8 +81406,8 @@
         "UniqueId": {
           "UniqueId": "00000000000000000000000000000000"
         },
-        "Video": {
-          "ContentId": ""
+        "VideoContent": {
+          "Content": "None"
         },
         "Visible": {
           "Bool": true
@@ -84429,20 +84439,6 @@
             ]
           }
         },
-        "MaxSize": {
-          "Vector3": [
-            10.0,
-            10.0,
-            10.0
-          ]
-        },
-        "Offset": {
-          "Vector3": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        },
         "Sandboxed": {
           "Bool": false
         },
@@ -84530,6 +84526,36 @@
             "Value": "Bool"
           },
           "Tags": [],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "MaxSize": {
+          "Name": "MaxSize",
+          "Scriptability": "None",
+          "DataType": {
+            "Value": "Vector3"
+          },
+          "Tags": [
+            "Hidden"
+          ],
+          "Kind": {
+            "Canonical": {
+              "Serialization": "Serializes"
+            }
+          }
+        },
+        "Offset": {
+          "Name": "Offset",
+          "Scriptability": "None",
+          "DataType": {
+            "Value": "Vector3"
+          },
+          "Tags": [
+            "Hidden"
+          ],
           "Kind": {
             "Canonical": {
               "Serialization": "Serializes"
@@ -84763,9 +84789,9 @@
         },
         "MaxSize": {
           "Vector3": [
-            10.0,
-            10.0,
-            10.0
+            0.0,
+            0.0,
+            0.0
           ]
         },
         "Offset": {
@@ -84960,20 +84986,6 @@
               ]
             ]
           }
-        },
-        "MaxSize": {
-          "Vector3": [
-            10.0,
-            10.0,
-            10.0
-          ]
-        },
-        "Offset": {
-          "Vector3": [
-            0.0,
-            0.0,
-            0.0
-          ]
         },
         "Sandboxed": {
           "Bool": false
@@ -85909,6 +85921,13 @@
         "Scriptable": 6,
         "Track": 3,
         "Watch": 2
+      }
+    },
+    "CaptureType": {
+      "name": "CaptureType",
+      "items": {
+        "Screenshot": 0,
+        "Video": 1
       }
     },
     "CatalogCategoryFilter": {
